@@ -1,0 +1,3 @@
+# Fresh Cart
+
+E-commerce website for buying and selling fresh produce, which allows users to create accounts, view products, and make purchases with card or cash on delivery, and Put products to WishList to buy later and more...
