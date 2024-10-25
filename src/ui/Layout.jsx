@@ -7,10 +7,10 @@ import Footer from "./Footer";
 
 const Layout = () => {
   return (
-    <>
+    <div className="layout">
       <Navbar />
 
-      <main className="container ">
+      <main className="container">
         <Outlet />
         <Offline>
           <div className="network">
@@ -20,7 +20,7 @@ const Layout = () => {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 };
 
