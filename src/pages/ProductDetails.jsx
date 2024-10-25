@@ -102,17 +102,24 @@ const ProductDetails = () => {
                   <i
                     className="fa-solid fs-2 fa-heart text-danger cursor-pointer wish-button"
                     onClick={() =>
-                      removeProductFromWhishList({
-                        productId: productID,
-                        userToken,
-                      })
+                      userToken
+                        ? removeProductFromWhishList({
+                            productId: productID,
+                            userToken,
+                          })
+                        : navigate("/login")
                     }
                   ></i>
                 ) : (
                   <i
                     className="fa-regular fs-2 fa-heart cursor-pointer wish-button"
                     onClick={() =>
-                      addProductToWishList({ productId: productID, userToken })
+                      userToken
+                        ? addProductToWishList({
+                            productId: productID,
+                            userToken,
+                          })
+                        : navigate("/login")
                     }
                   ></i>
                 )}

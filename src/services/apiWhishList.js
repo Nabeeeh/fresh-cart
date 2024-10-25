@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export async function getAllWhishListProductsApi({ userToken }) {
+  if (!userToken) return;
+
   try {
     const { data } = await axios.get(
       "https://ecommerce.routemisr.com/api/v1/wishlist",

@@ -61,14 +61,21 @@ const ProductItem = ({ product = {} }) => {
             <i
               className="fa-solid fs-3 fa-heart text-danger cursor-pointer wish"
               onClick={() =>
-                removeProductFromWhishList({ productId: productID, userToken })
+                userToken
+                  ? removeProductFromWhishList({
+                      productId: productID,
+                      userToken,
+                    })
+                  : navigate("/login")
               }
             ></i>
           ) : (
             <i
               className="fa-regular fs-3 fa-heart cursor-pointer wish"
               onClick={() =>
-                addProductToWishList({ productId: productID, userToken })
+                userToken
+                  ? addProductToWishList({ productId: productID, userToken })
+                  : navigate("/login")
               }
             ></i>
           )}
