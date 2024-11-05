@@ -96,7 +96,7 @@ const Navbar = () => {
 
                 <li className="nav-item">
                   <Link
-                    className="nav-link active btn text-success rounded-2"
+                    className="nav-link active text-success"
                     aria-current="page"
                     to="/profile"
                   >

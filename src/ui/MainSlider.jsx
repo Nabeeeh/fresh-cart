@@ -26,7 +26,7 @@ const MainSlider = () => {
         <Slider {...settings}>
           <div>
             <img
-              height={360}
+              height={320}
               className="w-100"
               src={slideImg1}
               alt="slider-image"
@@ -34,7 +34,7 @@ const MainSlider = () => {
           </div>
           <div>
             <img
-              height={360}
+              height={320}
               className="w-100"
               src={slideImg2}
               alt="slider-image"
@@ -42,7 +42,7 @@ const MainSlider = () => {
           </div>
           <div>
             <img
-              height={360}
+              height={320}
               className="w-100"
               src={slideImg3}
               alt="slider-image"
@@ -52,8 +52,8 @@ const MainSlider = () => {
       </div>
 
       <div className="col-md-3">
-        <img height={180} className="w-100" src={blogImg1} alt="blog-image" />
-        <img height={180} className="w-100" src={blogImg2} alt="blog-image" />
+        <img height={160} className="w-100" src={blogImg1} alt="blog-image" />
+        <img height={160} className="w-100" src={blogImg2} alt="blog-image" />
       </div>
     </div>
   );

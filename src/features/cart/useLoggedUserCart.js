@@ -7,7 +7,7 @@ import { getLoggedUserCartApi } from "../../services/apiCart";
 export function useLoggedUserCart() {
   const { userToken } = useUserToken();
 
-  const { data: loggedUserCart } = useQuery({
+  const { data: loggedUserCart, isLoading: isLoadingCart } = useQuery({
     queryKey: ["loggedUserCart"],
     queryFn: () => getLoggedUserCartApi(userToken),
     enabled: !!userToken,
@@ -17,5 +17,5 @@ export function useLoggedUserCart() {
     },
   });
 
-  return { loggedUserCart };
+  return { loggedUserCart, isLoadingCart };
 }

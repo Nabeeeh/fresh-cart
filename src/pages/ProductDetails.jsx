@@ -62,7 +62,7 @@ const ProductDetails = () => {
 
             <div className="col-lg-3 col-md-4 col-sm-5">
               <Slider {...settings}>
-                {productDetails.images.map((image, i) => (
+                {productDetails?.images.map((image, i) => (
                   <img
                     src={image}
                     className="w-100"
@@ -78,9 +78,9 @@ const ProductDetails = () => {
               <p className="mt-4">{productDetails?.description}</p>
               <p className="text-main">{productDetails?.category?.name}</p>
               <div className="d-flex align-items-center justify-content-between">
-                <p>{productDetails.price} EGP</p>
+                <p>{productDetails?.price} EGP</p>
                 <p>
-                  <i className="fa-solid fa-star rating-color"></i>{" "}
+                  <i className="fa-solid fa-star rating-color me-1"></i>
                   {productDetails?.ratingsAverage}
                 </p>
               </div>

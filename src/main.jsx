@@ -9,7 +9,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 0 } },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

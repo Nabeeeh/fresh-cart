@@ -4,7 +4,7 @@ const Category = ({ category = {} }) => {
     <div>
       <img
         className="w-100"
-        height={180}
+        height={160}
         src={category?.image}
         alt={category?.slug}
       />

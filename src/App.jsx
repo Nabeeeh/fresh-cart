@@ -18,6 +18,7 @@ import Checkout from "./pages/Checkout";
 import NotFound from "./ui/NotFound";
 import Profile from "./pages/Profile";
 import WishList from "./pages/WishList";
+import ProtectedLogin from "./ui/ProtectedLogin";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -83,8 +84,22 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
+      {
+        path: "/login",
+        element: (
+          <ProtectedLogin>
+            <Login />
+          </ProtectedLogin>
+        ),
+      },
+      {
+        path: "/register",
+        element: (
+          <ProtectedLogin>
+            <Register />
+          </ProtectedLogin>
+        ),
+      },
       { path: "*", element: <NotFound /> },
     ],
   },

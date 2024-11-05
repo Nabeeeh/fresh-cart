@@ -7,20 +7,21 @@ import Footer from "./Footer";
 
 const Layout = () => {
   return (
-    <div className="layout">
-      <Navbar />
+    <>
+      <div className="min-vh-100">
+        <Navbar />
 
-      <main className="container">
-        <Outlet />
-        <Offline>
-          <div className="network">
-            <i className="fa fa-wifi pe-2"></i> You Are Currently Offline !!
-          </div>
-        </Offline>
-      </main>
-
+        <main className="container">
+          <Outlet />
+          <Offline>
+            <div className="network">
+              <i className="fa fa-wifi pe-2"></i> You Are Currently Offline !!
+            </div>
+          </Offline>
+        </main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
