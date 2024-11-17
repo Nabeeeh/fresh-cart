@@ -132,7 +132,7 @@ const Navbar = () => {
               <li className="nav-item ">
                 <button
                   type="button"
-                  className="nav-link active btn text-danger fw-bolder "
+                  className="nav-link btn text-danger fw-bolder "
                   onClick={logOut}
                   aria-current="page"
                 >
