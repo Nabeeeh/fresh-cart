@@ -39,7 +39,7 @@ const Checkout = () => {
         onlinePay({ cartId, shippingAddress: values, userToken });
       }
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 

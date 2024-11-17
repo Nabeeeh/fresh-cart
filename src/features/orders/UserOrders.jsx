@@ -1,7 +1,7 @@
 import { useUserOrders } from "./useUserOrders";
+import { TailSpin } from "react-loader-spinner";
 
 import Order from "./Order";
-import { TailSpin } from "react-loader-spinner";
 
 const UserOrders = () => {
   const { userOrders, isLoadingUserOrders } = useUserOrders();

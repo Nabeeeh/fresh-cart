@@ -13,8 +13,8 @@ const WhishListProduct = ({ wishProduct = {} }) => {
     useRemoveProductFromWishList();
 
   return (
-    <div className="row py-1 border-bottom bg-main-light rounded-2">
-      <div className="col-md-1 col-sm-2">
+    <div className="row py-2 border-bottom bg-main-light rounded-1">
+      <div className="col-md-1 col-sm-2 d-flex justify-content-center align-items-center">
         <Link to={`/products/productDetails/${wishProduct?.id}`}>
           <img
             className="w-100"

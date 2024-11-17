@@ -1,24 +1,27 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
+import { TailSpin } from "react-loader-spinner";
 
 import UserContextProvider from "../src/Context/UserContext";
 
 import Layout from "./ui/Layout";
 import ProtectedRoute from "./ui/ProtectedRoute";
-import ProductDetails from "./pages/ProductDetails";
-import Brands from "./pages/Brands";
-import Categories from "./pages/Categories";
-import AllOrders from "./pages/AllOrders";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import NotFound from "./ui/NotFound";
-import Profile from "./pages/Profile";
-import WishList from "./pages/WishList";
 import ProtectedLogin from "./ui/ProtectedLogin";
+
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const Brands = lazy(() => import("./pages/Brands"));
+const Categories = lazy(() => import("./pages/Categories"));
+const AllOrders = lazy(() => import("./pages/AllOrders"));
+const Register = lazy(() => import("./pages/Register"));
+const Login = lazy(() => import("./pages/Login"));
+const Home = lazy(() => import("./pages/Home"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const NotFound = lazy(() => import("./ui/NotFound"));
+const Profile = lazy(() => import("./pages/Profile"));
+const WishList = lazy(() => import("./pages/WishList"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,32 +34,133 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
+      {
+        index: true,
+        element: (
+          <Suspense
+            fallback={
+              <TailSpin
+                visible={true}
+                height="100"
+                width="100"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass="justify-content-center"
+              />
+            }
+          >
+            <Home />
+          </Suspense>
+        ),
+      },
       {
         path: "/brands",
-        element: <Brands />,
+        element: (
+          <Suspense
+            fallback={
+              <TailSpin
+                visible={true}
+                height="100"
+                width="100"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass="justify-content-center"
+              />
+            }
+          >
+            <Brands />
+          </Suspense>
+        ),
       },
       {
         path: "/products/productDetails/:productID",
-        element: <ProductDetails />,
+        element: (
+          <Suspense
+            fallback={
+              <TailSpin
+                visible={true}
+                height="100"
+                width="100"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass="justify-content-center"
+              />
+            }
+          >
+            <ProductDetails />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
         element: (
           <ProtectedRoute>
-            <Cart />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <Cart />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
       {
         path: "/categories",
-        element: <Categories />,
+        element: (
+          <Suspense
+            fallback={
+              <TailSpin
+                visible={true}
+                height="100"
+                width="100"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass="justify-content-center"
+              />
+            }
+          >
+            <Categories />
+          </Suspense>
+        ),
       },
       {
         path: "/checkout",
         element: (
           <ProtectedRoute>
-            <Checkout />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <Checkout />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -64,7 +168,22 @@ const router = createBrowserRouter([
         path: "/wishlist",
         element: (
           <ProtectedRoute>
-            <WishList />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <WishList />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -72,7 +191,22 @@ const router = createBrowserRouter([
         path: "/allorders",
         element: (
           <ProtectedRoute>
-            <AllOrders />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <AllOrders />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -80,7 +214,22 @@ const router = createBrowserRouter([
         path: "/profile",
         element: (
           <ProtectedRoute>
-            <Profile />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <Profile />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -88,7 +237,22 @@ const router = createBrowserRouter([
         path: "/login",
         element: (
           <ProtectedLogin>
-            <Login />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <Login />
+            </Suspense>
           </ProtectedLogin>
         ),
       },
@@ -96,11 +260,46 @@ const router = createBrowserRouter([
         path: "/register",
         element: (
           <ProtectedLogin>
-            <Register />
+            <Suspense
+              fallback={
+                <TailSpin
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperStyle={{}}
+                  wrapperClass="justify-content-center"
+                />
+              }
+            >
+              <Register />
+            </Suspense>
           </ProtectedLogin>
         ),
       },
-      { path: "*", element: <NotFound /> },
+      {
+        path: "*",
+        element: (
+          <Suspense
+            fallback={
+              <TailSpin
+                visible={true}
+                height="100"
+                width="100"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass="justify-content-center"
+              />
+            }
+          >
+            <NotFound />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);

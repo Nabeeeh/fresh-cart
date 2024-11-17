@@ -88,6 +88,10 @@ a:hover {
   border: solid 1px var(--main-color);
 }
 
+.active {
+  background-color: #eee !important;
+}
+
 .network {
   position: fixed;
   bottom: 8%;

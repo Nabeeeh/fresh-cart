@@ -6,7 +6,7 @@ import { useUserToken } from "../../Context/useUserToken";
 
 export function useLogin() {
   const navigate = useNavigate();
-  const { setUserTokenToLocalStorage } = useUserToken();
+  const { setUserTokenToCookies } = useUserToken();
 
   const queryClient = useQueryClient();
 
@@ -14,7 +14,7 @@ export function useLogin() {
     mutationFn: (values) => loginApi(values),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["loggedUserCart"] });
-      setUserTokenToLocalStorage(data.token);
+      setUserTokenToCookies(data.token);
 
       navigate("/", { replace: true });
       toast.success("Login successfully");

@@ -1,16 +1,20 @@
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { onlinePaymentApi } from "../../services/apiPayment";
+import toast from "react-hot-toast";
 
 export function useOnlinePayment() {
+  const queryClient = useQueryClient();
+
   const { mutate: onlinePay, isLoading: isLoadingOnlinePayment } = useMutation({
     mutationFn: ({ cartId, shippingAddress, userToken }) =>
       onlinePaymentApi({ cartId, shippingAddress, userToken }),
     onSuccess: (data) => {
-      console.log(data);
+      queryClient.invalidateQueries({ queryKey: ["loggedUserCart"] });
+
       window.location.href = data?.session.url;
     },
-    onError: (error) => {
-      console.log(error.message);
+    onError: () => {
+      toast.success("Payment Failed", { duration: 2500 });
     },
   });
 

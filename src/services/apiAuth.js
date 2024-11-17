@@ -20,8 +20,6 @@ export async function loginApi(values) {
       values
     );
 
-    localStorage.setItem("userToken", data.token);
-
     return data;
   } catch (error) {
     throw new Error(error.response.data.message);

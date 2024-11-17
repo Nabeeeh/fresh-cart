@@ -9,7 +9,6 @@ const Footer = () => {
   return (
     <footer className=" bg-main-light p-3 mt-4 ">
       <h2>Get the FreshCart app</h2>
-      <p>We will send you a link, open it on your phone to download the app.</p>
       <div className="row py-3 gy-3">
         <div className="col-lg-7 col-md-6 col-sm-12">
           <div className="d-flex align-items-center">

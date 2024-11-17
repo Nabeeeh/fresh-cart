@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { useUserToken } from "../Context/useUserToken";
 import { useLoggedUserCart } from "../features/cart/useLoggedUserCart";
@@ -7,12 +7,12 @@ import Logo from "./Logo";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { userToken, removeUserTokenFromLocalStorage } = useUserToken();
+  const { userToken, removeUserTokenFromCookies } = useUserToken();
 
   const { loggedUserCart } = useLoggedUserCart();
 
   const logOut = () => {
-    removeUserTokenFromLocalStorage();
+    removeUserTokenFromCookies();
     navigate("/login");
   };
 
@@ -35,44 +35,44 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll column-gap-2">
             <li className="nav-item">
-              <Link
-                className="nav-link active text-success fw-bolder"
+              <NavLink
+                className="nav-link  text-success fw-bolder"
                 aria-current="page"
                 to="/"
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link active text-success fw-bolder"
+              <NavLink
+                className="nav-link  text-success fw-bolder"
                 aria-current="page"
                 to="/categories"
               >
                 Categories
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link active text-success fw-bolder "
+              <NavLink
+                className="nav-link  text-success fw-bolder "
                 aria-current="page"
                 to="/brands"
               >
                 Brands
-              </Link>
+              </NavLink>
             </li>
 
             {userToken && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active text-success fw-bolder "
+                <NavLink
+                  className="nav-link  text-success fw-bolder "
                   aria-current="page"
                   to="/wishlist"
                 >
                   Wishlist
-                </Link>
+                </NavLink>
               </li>
             )}
           </ul>
@@ -81,27 +81,25 @@ const Navbar = () => {
             {userToken && (
               <>
                 <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/cart"
-                  >
+                  <NavLink className="nav-link " aria-current="page" to="/cart">
                     <i className="fa-solid fa-1x fa-cart-shopping text-success position-relative">
-                      <span className="badge bg-danger mx-2 rounded-circle position-absolute start-50 bottom-50 ">
-                        {loggedUserCart?.numOfCartItems}
-                      </span>
+                      {loggedUserCart?.numOfCartItems > 0 && (
+                        <span className="badge bg-danger mx-2 rounded-circle position-absolute start-50 bottom-50 ">
+                          {loggedUserCart?.numOfCartItems}
+                        </span>
+                      )}
                     </i>
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <Link
-                    className="nav-link active text-success"
+                  <NavLink
+                    className="nav-link  text-success"
                     aria-current="page"
                     to="/profile"
                   >
                     <i className="fa-solid fa-user  fa-1x"></i>
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
@@ -109,23 +107,23 @@ const Navbar = () => {
             {!userToken && (
               <>
                 <li className="nav-item">
-                  <Link
-                    className="nav-link active text-success fw-bolder"
+                  <NavLink
+                    className="nav-link  text-success fw-bolder"
                     aria-current="page"
                     to="/login"
                   >
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <Link
-                    className="nav-link active text-success fw-bolder"
+                  <NavLink
+                    className="nav-link  text-success fw-bolder"
                     aria-current="page"
                     to="/register"
                   >
                     Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}

@@ -1,29 +1,30 @@
 import { createContext, useState } from "react";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 export const UserContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const UserContextProvider = function ({ children }) {
-  const [userToken, setUserToken] = useState(
-    localStorage.getItem?.("userToken")
-  );
+  const [userToken, setUserToken] = useState(cookies.get("userToken"));
 
-  const setUserTokenToLocalStorage = (userToken) => {
+  const setUserTokenToCookies = (userToken) => {
     setUserToken(userToken);
-    return localStorage.setItem("userToken", userToken);
+    return cookies.set("userToken", userToken, { secure: true });
   };
 
-  const removeUserTokenFromLocalStorage = () => {
+  const removeUserTokenFromCookies = () => {
     setUserToken(null);
-    return localStorage.removeItem?.("userToken");
+    return cookies.remove("userToken", { secure: true });
   };
 
   return (
     <UserContext.Provider
       value={{
         userToken,
-        setUserTokenToLocalStorage,
-        removeUserTokenFromLocalStorage,
+        setUserTokenToCookies,
+        removeUserTokenFromCookies,
       }}
     >
       {children}
